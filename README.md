@@ -1,1 +1,1 @@
-<h1><img align="left" width="40" height="40" src="/assets/icon.png"/></h1>
+<h1><img align="left" width="50" height="50" src="/assets/icon.png"/>Sun Find</h1>
