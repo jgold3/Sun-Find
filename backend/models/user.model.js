@@ -11,17 +11,17 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3,
     },
-    password: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-        minlength: 8,
-    },
-    locations: {
-        type: Object,
-        required: false,
-    }
+    // password: {
+    //     type: String,
+    //     required: true,
+    //     unique: false,
+    //     trim: true,
+    //     minlength: 8,
+    // },
+    // locations: {
+    //     type: Object,
+    //     required: false,
+    // }
 
 }, {
     timestamps: true,
