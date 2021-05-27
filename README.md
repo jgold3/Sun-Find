@@ -1,4 +1,4 @@
-<h1><img align="left" width="50" height="50" src="/assets/icon.png"/>Sun Find</h1>
+<h1><img align="left" width="50" height="50" src="expo-client/assets/icon.png"/>Sun Find</h1>
 
 Description here...
 
