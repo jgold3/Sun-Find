@@ -3,15 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons'; 
-import LoginScreen from './pages/login.js';
-
-let MapScreen = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Map Screen!</Text>
-    </View>
-  );
-};
+import LoginScreen from './pages/login';
+import MapScreen from './pages/map';
 
 let PicSelectScreen = () => {
   return (
