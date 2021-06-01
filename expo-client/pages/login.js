@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { render } from 'react-dom';
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -120,7 +120,10 @@ export default LoginScreen = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={styles.container}
+        >
             <Image source = {require('../assets/logo.png')} style={styles.logo}/>
             <View style={styles.inputView}>
                 <TextInput
@@ -148,7 +151,9 @@ export default LoginScreen = () => {
             <TouchableOpacity onPress={login} style={styles.loginBtn}>
                 <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>
-            <Text style={styles.subText}>Don't have an account?</Text>
+            <View>
+                <Text style={styles.subText}>Don't have an account?</Text>
+            </View>
             <View style={styles.btmContainer}>
                 <TouchableOpacity onPress={signUp} style={styles.btmButtons}>
                     <Text style={styles.btmButtonsText}>Sign Up</Text>
@@ -157,6 +162,6 @@ export default LoginScreen = () => {
                     <Text style={styles.btmButtonsText}>Skip</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 };
