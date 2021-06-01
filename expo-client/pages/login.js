@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { render } from 'react-dom';
 import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const styles = StyleSheet.create({
