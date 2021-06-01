@@ -21,3 +21,14 @@ Description here...
 
 4. Create a .env file to hold the environment variables used in the project.
 	- Please contect the development team if you need your own copy of keys
+
+5. Start a local express.js server that holds API endpoints for the backend. Do this in a sepperate terminal window.
+	- ```cd backend```
+	- ```npm run dev```
+
+6. In another terminal window, start the Expo CLI.
+	- ```cd expo-client```
+	- ```expo start```
+	- Scan the QR code that pops up.
+	- This will buid the app through the Expo Go app that you installed earlier.
+
