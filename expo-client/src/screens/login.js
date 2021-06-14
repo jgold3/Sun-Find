@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { render } from 'react-dom';
 import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -107,7 +106,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default LoginScreen = () => {
+export default LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -124,7 +123,7 @@ export default LoginScreen = () => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
         >
-            <Image source = {require('../assets/logo.png')} style={styles.logo}/>
+            <Image source = {require('../../assets/logo.png')} style={styles.logo}/>
             <View style={styles.inputView}>
                 <TextInput
                     style={styles.textInput}
@@ -155,7 +154,7 @@ export default LoginScreen = () => {
                 <Text style={styles.subText}>Don't have an account?</Text>
             </View>
             <View style={styles.btmContainer}>
-                <TouchableOpacity onPress={signUp} style={styles.btmButtons}>
+                <TouchableOpacity onPress={() => navigation.navigate('Sign Up')} style={styles.btmButtons}>
                     <Text style={styles.btmButtonsText}>Sign Up</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={signUp} style={styles.btmButtons}>
