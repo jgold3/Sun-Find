@@ -27,15 +27,15 @@ const styles = StyleSheet.create({
 });
 
 
-export default PrimaryButton = ({ title, btnStyle, txtStyle, onPress }) => {
+export default FormInput = ({ contStyle, userTxtStyle, placeholder, placeholderColor, secure, onChangeText }) => {
     return (
-        <View style={styles.inputView}>
+        <View style={[styles.container, contStyle]}>
             <TextInput
-                style={styles.textInput}
-                placeholder='Password'
-                placeholderTextColor = '#ff4500'
-                secureTextEntry={true}
-                onChangeText={(password) => setPassword(password)}
+                style={[styles.text, userTxtStyle]}
+                placeholder={placeholder}
+                placeholderTextColor = {placeholderColor ? placeholderColor : '#ff4500'}
+                secureTextEntry={secure}
+                onChangeText={onChangeText}
             />
         </View>
     );
