@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 export default Main = () => {
     return (
-        <Stack.Navigator initialRouteName="SunFind" >
+        <Stack.Navigator initialRouteName="Login" >
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Sign Up" component={SignUpScreen} />
             <Stack.Screen name="SunFind" component={Home} />   

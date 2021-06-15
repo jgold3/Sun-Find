@@ -3,6 +3,10 @@ import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpac
 import styles from './styles/login.style';
 import { setToken } from '../api/token';
 import { login } from '../api/account';
+import PrimaryButton from '../components/PrimaryButton';
+import SecondaryButton from '../components/SecondaryButton';
+import TextButton from '../components/TextButton';
+import SubText from '../components/SubText';
 
 export default LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
@@ -10,11 +14,12 @@ export default LoginScreen = ({navigation}) => {
     const [errMsg, setErrMsg] = useState('');
 
     let submit = async () => {
-        login(email, password)
-            .then(async res => {
-                await setToken(res.auth_token)
-            })
-            .catch(res => setErrMsg(res.error));
+        // login(email, password)
+        //     .then(async res => {
+        //         await setToken(res.auth_token)
+        //     })
+        //     .catch(res => setErrMsg(res.error));
+        alert("Ayye");
         
     };
 
@@ -47,23 +52,16 @@ export default LoginScreen = ({navigation}) => {
                 />
             </View>
             
-            <TouchableOpacity>
-                <Text style={styles.forgot_button}>Forgot Password?</Text>
-            </TouchableOpacity>
+            <TextButton title="Forgot Password?" onPress={() => alert('You idiot')} />
 
-            <TouchableOpacity onPress={submit} style={styles.loginBtn}>
-                <Text style={styles.loginText}>Login</Text>
-            </TouchableOpacity>
-            <View>
-                <Text style={styles.subText}>Don't have an account?</Text>
-            </View>
+            <PrimaryButton title="Login"  onPress={submit}/>
+
+            <SubText>Don't have an account?</SubText>
             <View style={styles.btmContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate('Sign Up')} style={styles.btmButtons}>
-                    <Text style={styles.btmButtonsText}>Sign Up</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={skip} style={styles.btmButtons}>
-                    <Text style={styles.btmButtonsText}>Skip</Text>
-                </TouchableOpacity>
+                <SecondaryButton title="Sign Up" onPress={() => navigation.navigate('Sign Up')} />
+                <SecondaryButton title="Skip" onPress={skip} />
+            </View>
+            <View>
                 {errMsg ? <Text>{errMsg}</Text> : null}
             </View>
         </KeyboardAvoidingView>
