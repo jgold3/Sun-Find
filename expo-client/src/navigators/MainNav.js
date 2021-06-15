@@ -10,7 +10,6 @@ const Tab = createBottomTabNavigator();
 
 export default MainNav = () => {
   return (
-    <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Map"
         screenOptions={({ route }) => ({
@@ -37,6 +36,5 @@ export default MainNav = () => {
           <Tab.Screen name="PicSelect" component={PicSelectScreen}/>
           <Tab.Screen name="UserProfile" component={UserProfileScreen}/>
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }
