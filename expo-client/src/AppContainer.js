@@ -1,23 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import LoginNav from './navigators/LoginNav';
-import MainNav from './navigators/MainNav';
-import getToken from './api/token';
-
+import Main from './navigators/Main';
 
 export default AppContainer = () => {
-    const [authToken, setAuthToken] = useState(null);
-
-    useEffect(() => {
-        getAuthToken = async () => {
-            const token = await getToken();
-            setAuthToken(token);
-        }
-        setAuthToken();
-    },);
     return (
         <NavigationContainer>
-            {authToken ? <MainNav />: <LoginNav/>} 
+            <Main /> 
         </NavigationContainer>
     )
 };

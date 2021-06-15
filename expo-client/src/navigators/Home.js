@@ -8,7 +8,7 @@ import UserProfileScreen from '../screens/user_profile';
 
 const Tab = createBottomTabNavigator();
 
-export default MainNav = () => {
+export default Home = () => {
   return (
       <Tab.Navigator
         initialRouteName="Map"

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles/login.style';
-import setToken from '../api/token';
+import { setToken } from '../api/token';
+import { login } from '../api/account';
 
 export default LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
@@ -9,10 +10,15 @@ export default LoginScreen = ({navigation}) => {
     const [errMsg, setErrMsg] = useState('');
 
     let submit = async () => {
-        alert("Ayye");
+        login(email, password)
+            .then(async res => {
+                await setToken(res.auth_token)
+            })
+            .catch(res => setErrMsg(res.error));
+        
     };
 
-    let signUp = async () => {
+    let skip = async () => {
         alert("Ayye");
     };
 
@@ -55,9 +61,10 @@ export default LoginScreen = ({navigation}) => {
                 <TouchableOpacity onPress={() => navigation.navigate('Sign Up')} style={styles.btmButtons}>
                     <Text style={styles.btmButtonsText}>Sign Up</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={signUp} style={styles.btmButtons}>
+                <TouchableOpacity onPress={skip} style={styles.btmButtons}>
                     <Text style={styles.btmButtonsText}>Skip</Text>
                 </TouchableOpacity>
+                {errMsg ? <Text>{errMsg}</Text> : null}
             </View>
         </KeyboardAvoidingView>
     );
