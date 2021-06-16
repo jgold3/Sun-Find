@@ -8,10 +8,10 @@ const Stack = createStackNavigator();
 
 export default Main = () => {
     return (
-        <Stack.Navigator initialRouteName="Login" >
-            <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Navigator initialRouteName="SunFind" >
+            <Stack.Screen name="Login" component={LoginScreen} options={{headerLeft: () => null}} />
             <Stack.Screen name="Sign Up" component={SignUpScreen} />
-            <Stack.Screen name="SunFind" component={Home} />   
+            <Stack.Screen name="SunFind" component={Home} options={{headerLeft: () => null}} />   
         </Stack.Navigator>  
     );
 };

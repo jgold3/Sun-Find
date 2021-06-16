@@ -1,14 +1,40 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons'; 
 import MapScreen from '../screens/map';
 import PicSelectScreen from '../screens/Picture_selection';
 import UserProfileScreen from '../screens/user_profile';
+import { getToken } from '../api/token';
 
 const Tab = createBottomTabNavigator();
 
-export default Home = () => {
+export default Home = ({ navigation }) => {
+
+  const [authToken, setAuthToken] = useState(null);
+
+  getAuthToken = async() => {
+    let token = await getToken();
+    console.log(token);
+    if (!token) {
+      navigation.navigate('Login');
+    }
+    setAuthToken(token);
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      if (authToken === null) {
+        console.log("HERE");
+        getAuthToken();
+      }
+      return () => {
+        console.log("Clean up time");
+        setAuthToken(null);
+      }
+    },[])
+  );
+
   return (
       <Tab.Navigator
         initialRouteName="Map"
@@ -34,7 +60,7 @@ export default Home = () => {
         }}>
           <Tab.Screen name="Map" component={MapScreen}/>
           <Tab.Screen name="PicSelect" component={PicSelectScreen}/>
-          <Tab.Screen name="UserProfile" component={UserProfileScreen}/>
+          <Tab.Screen name="UserProfile" component={UserProfileScreen} />
       </Tab.Navigator>
   );
 }

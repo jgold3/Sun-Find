@@ -1,19 +1,12 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+import { View } from 'react-native';
+import MapView from 'react-native-maps';
+import styles from './styles/map.style';
 
 export default MapScreen = () => {
-    return (
-      <View style={styles.container}>
-        <Text>Map Screen!</Text>
-      </View>
-    );
+  return (
+    <View style={styles.container}>
+      <MapView style={styles.map}/>
+    </View>
+  );
 };

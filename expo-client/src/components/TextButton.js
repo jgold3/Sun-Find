@@ -1,13 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-        marginBottom: 40,
-    },
-});
-
+import { Text, TouchableOpacity } from 'react-native';
+import styles from './styles/TextButton.style';
 
 export default TextButton = ({ title, style, onPress }) => {
     return (

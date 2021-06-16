@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { Button, StyleSheet, View, Text } from 'react-native';
+import { setToken } from '../api/token';
 
 const styles = StyleSheet.create({
     container: {
@@ -10,10 +11,16 @@ const styles = StyleSheet.create({
     },
 });
 
-export default UserProfileScreen = () => {
-    return (
-      <View style={styles.container}>
-        <Text>User Profile Screen!</Text>
-      </View>
-    );
+export default UserProfileScreen = ({ route, navigation }) => {
+  let logout = async () => {
+    await setToken('');
+    navigation.navigate('Login');
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text>User Profile Screen!</Text>
+      <Button title="Log Out" onPress={logout}/>
+    </View>
+  );
 };

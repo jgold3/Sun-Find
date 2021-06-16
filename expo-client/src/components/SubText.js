@@ -1,13 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-const styles = StyleSheet.create({
-    text: {
-        marginTop: 10,
-        marginBottom: 5,
-    },
-});
-
+import { Text, View } from 'react-native';
+import styles from './styles/SubText.style';
 
 export default SubText = ({ style, children }) => {
     return (

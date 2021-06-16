@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, KeyboardAvoidingView, View } from 'react-native';
 import styles from './styles/login.style';
 import { setToken } from '../api/token';
 import { login } from '../api/account';
@@ -7,6 +7,7 @@ import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 import TextButton from '../components/TextButton';
 import SubText from '../components/SubText';
+import FormInput from '../components/FormInput';
 
 export default LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
@@ -14,12 +15,12 @@ export default LoginScreen = ({navigation}) => {
     const [errMsg, setErrMsg] = useState('');
 
     let submit = async () => {
-        // login(email, password)
-        //     .then(async res => {
-        //         await setToken(res.auth_token)
-        //     })
-        //     .catch(res => setErrMsg(res.error));
-        alert("Ayye");
+        login(email, password)
+            .then(async res => {
+                await setToken(res.auth_token);
+                navigation.navigate('SunFind');
+            })
+            .catch(res => setErrMsg(res.error));
         
     };
 
@@ -32,26 +33,10 @@ export default LoginScreen = ({navigation}) => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
         >
-            <Image source = {require('../../assets/logo.png')} style={styles.logo}/>
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder = 'Email'
-                    placeholderTextColor = '#ff4500'
-                    onChangeText={(email) => setEmail(email)}
-                />
-            </View>
-            
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder='Password'
-                    placeholderTextColor = '#ff4500'
-                    secureTextEntry={true}
-                    onChangeText={(password) => setPassword(password)}
-                />
-            </View>
-            
+            <Image source = {require('../../assets/logo.png')} style={styles.logo} />
+
+            <FormInput placeholder='Email' onChangeText={(email) => setEmail(email)} />
+            <FormInput placeholder='Password' secure={true} onChangeText={(password) => setPassword(password)} />
             <TextButton title="Forgot Password?" onPress={() => alert('You idiot')} />
 
             <PrimaryButton title="Login"  onPress={submit}/>
@@ -61,8 +46,9 @@ export default LoginScreen = ({navigation}) => {
                 <SecondaryButton title="Sign Up" onPress={() => navigation.navigate('Sign Up')} />
                 <SecondaryButton title="Skip" onPress={skip} />
             </View>
+
             <View>
-                {errMsg ? <Text>{errMsg}</Text> : null}
+                {errMsg ? <SubText>{errMsg}</SubText> : null}
             </View>
         </KeyboardAvoidingView>
     );
