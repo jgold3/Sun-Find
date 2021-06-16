@@ -11,7 +11,7 @@ export default Main = () => {
         <Stack.Navigator initialRouteName="SunFind" >
             <Stack.Screen name="Login" component={LoginScreen} options={{headerLeft: () => null}} />
             <Stack.Screen name="Sign Up" component={SignUpScreen} />
-            <Stack.Screen name="SunFind" component={Home} options={{headerLeft: () => null}} />   
+            <Stack.Screen name="SunFind" component={Home} options={{headerShown: false}} />   
         </Stack.Navigator>  
     );
 };
