@@ -57,6 +57,9 @@ export default Home = ({ navigation }) => {
           activeTintColor: 'tomato',
           inactiveTintColor: 'gray',
           showLabel: false,
+          style: {
+            backgroundColor: '#f5f5f5'
+          },
         }}>
           <Tab.Screen name="Map" component={MapScreen}/>
           <Tab.Screen name="PicSelect" component={PicSelectScreen}/>
