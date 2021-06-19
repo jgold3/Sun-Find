@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PicSelectScreen = () => {
+export default AddLocationScreen = () => {
     return (
       <View style={styles.container}>
         <Text>Picture Screen!</Text>

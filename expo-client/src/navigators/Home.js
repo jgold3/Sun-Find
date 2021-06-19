@@ -2,9 +2,9 @@ import React, { useCallback, useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons'; 
-import MapScreen from '../screens/map';
-import PicSelectScreen from '../screens/Picture_selection';
-import UserProfileScreen from '../screens/user_profile';
+import MapScreen from '../screens/Map';
+import AddLocationScreen from '../screens/AddLocation';
+import UserProfileScreen from '../screens/UserProfile';
 import { getToken } from '../api/token';
 
 const Tab = createBottomTabNavigator();
@@ -44,7 +44,7 @@ export default Home = ({ navigation }) => {
             if (route.name == 'Map') {
               iconName = focused ? 'find' : 'find';
             }
-            else if (route.name == 'PicSelect') {
+            else if (route.name == 'AddLocation') {
               iconName = focused ? 'pluscircleo' : 'pluscircleo';
             }
             else if (route.name == 'UserProfile') {
@@ -62,7 +62,7 @@ export default Home = ({ navigation }) => {
           },
         }}>
           <Tab.Screen name="Map" component={MapScreen}/>
-          <Tab.Screen name="PicSelect" component={PicSelectScreen}/>
+          <Tab.Screen name="AddLocation" component={AddLocationScreen}/>
           <Tab.Screen name="UserProfile" component={UserProfileScreen} />
       </Tab.Navigator>
   );
