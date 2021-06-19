@@ -1,6 +1,6 @@
 <h1><img align="left" width="50" height="50" src="expo-client/assets/icon.png"/>Sun Find</h1>
 
-Description here...
+SunFind is a native iOS application made using React-Native. It allows users to post pictures of sunsets and sunrises with the location of where the picture was taken. Other users can then naviagte to the location and view and rate the SunFinds associated with it.
 
 ## Developer Installation
 1. [Install Expo CLI](https://docs.expo.io/get-started/installation/) and its dependencies, if you don't already have it installed.
