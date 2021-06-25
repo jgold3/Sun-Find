@@ -39,7 +39,7 @@ export default Home = ({ navigation }) => {
       <Tab.Navigator
         initialRouteName="Map"
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size}) => {
+          tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             if (route.name == 'Map') {
               iconName = focused ? 'find' : 'find';
