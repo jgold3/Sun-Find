@@ -13,7 +13,7 @@ export default Home = ({ navigation }) => {
 
   const [authToken, setAuthToken] = useState(null);
 
-  getAuthToken = async() => {
+  getAuthToken = async () => {
     let token = await getToken();
     console.log(token);
     if (!token) {
