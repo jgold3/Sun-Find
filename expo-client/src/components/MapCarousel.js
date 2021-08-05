@@ -1,2 +1,15 @@
+import React from 'react';
+import { Dimensions, Image, Text, View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import React, { useCallback, useState } from 'react';
+
+export default MapCarousel = ({ coordinates }) => { 
+    return (
+        <Carousel
+            ref={(c) => { carousel = c; }}
+            data={coordinates}
+            renderItem={renderCarouselItem}
+            sliderWidth={Dimensions.get('window').width}
+            itemWidth={200}
+        />
+    );
+};

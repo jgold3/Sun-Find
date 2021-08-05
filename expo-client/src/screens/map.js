@@ -62,7 +62,8 @@ export default MapScreen = () => {
       {
         errMsg ? <Text>{errMsg}</Text> :
           havePermission && (location === null || region === null) ? ( <ActivityIndicator size="large" color="#ff4500" /> ) : ( [
-            <MapView 
+            <MapView
+              key={0} 
               style={styles.map}
               provider={PROVIDER_GOOGLE}
               region={region}
@@ -79,7 +80,8 @@ export default MapScreen = () => {
                 ))
               }
             </MapView>,
-            <Text>YOOOOO</Text>
+            
+            <Text key={1}>YOOOOO</Text>
             ]
           )
       }
