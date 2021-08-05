@@ -13,7 +13,7 @@ export default Home = ({ navigation }) => {
 
   const [authToken, setAuthToken] = useState(null);
 
-  getAuthToken = async() => {
+  getAuthToken = async () => {
     let token = await getToken();
     console.log(token);
     if (!token) {
@@ -39,7 +39,7 @@ export default Home = ({ navigation }) => {
       <Tab.Navigator
         initialRouteName="Map"
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size}) => {
+          tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             if (route.name == 'Map') {
               iconName = focused ? 'find' : 'find';
