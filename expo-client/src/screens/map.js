@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, Image, Dimensions, View, Text } from 'react-native';
+import { ActivityIndicator, Image, View, Text } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import Carousel from 'react-native-snap-carousel';
 import * as Location from 'expo-location';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapCarousel from '../components/MapCarousel';
 import SunriseMarker from '../components/SunriseMarker';
 import UserMarker from '../components/UserMarker';
 import styles from './styles/map.style';
@@ -13,6 +13,8 @@ export default MapScreen = () => {
   const [havePermission, setHavePermission] = useState(false);
   const [errMsg, setErrMsg] = useState(null);
   const [region, setRegion] = useState(null);
+
+  const carousel = React.useRef(null);
 
   const [coordinates, setCoordinates] = useState([
     {name: '1', latitude: 39.470912, longitude: -75.888454, images: [require('../../assets/logo.png')]},
@@ -55,84 +57,35 @@ export default MapScreen = () => {
     }, [])
   );
 
-  if (errMsg) {
-    return (
-      <View style={styles.container}>
-        <Text>{errMsg}</Text>
-      </View>
-    );
-  } 
-  else if (havePermission && (location === null || region === null)) {
-    console.log('Here boi')
-    return (
-      <ActivityIndicator size="large" color="#ff4500" />
-    );
-  }
-  else if (!havePermission) {
-    return (
-      <View style={styles.container}>
-        <Text>You need to accept request for location, if you want to post points</Text>
-      </View>
-    );
-  }
-  else {
-    return (
-      <View style={styles.container}>
-        <MapView 
-          style={styles.map}
-          provider={PROVIDER_GOOGLE}
-          region={region}
-        > 
-          {location ? <UserMarker location={location} /> : null}
-          {
-            coordinates.map(coord => (
-              <SunriseMarker
-                key={coord.name}
-                name={coord.name}
-                coordinate={{latitude: coord.latitude, longitude: coord.longitude}}
-                image={coord.images[0]}
-              />
-            ))
-          }
-        </MapView>
-        <Carousel
-            ref={(c) => { carousel = c; }}
-            data={coordinates}
-            renderItem={renderCarouselItem}
-            sliderWidth={Dimensions.get('window').width}
-            itemWidth={200}
-        />
-      </View>
-    );
-  }
-  
-
-  // return (
-  //   <View style={styles.container}>
-  //     {
-  //       errMsg ? <Text>{errMsg}</Text> :
-  //         havePermission && (location === null || region === null) ? ( <ActivityIndicator size="large" color="#ff4500" /> ) : (
-            // <MapView 
-            //   style={styles.map}
-            //   provider={PROVIDER_GOOGLE}
-            //   region={region}
-            // > 
-            //   {location ? <UserMarker location={location} /> : null}
-            //   {
-            //     coordinates.map(coord => (
-            //       <SunriseMarker
-            //         key={coord.name}
-            //         name={coord.name}
-            //         coordinate={{latitude: coord.latitude, longitude: coord.longitude}}
-            //         image={coord.images[0]}
-            //       />
-            //     ))
-            //   }
-            // </MapView>
+  return (
+    <View style={styles.container}>
+      {
+        errMsg ? <Text>{errMsg}</Text> :
+          havePermission && (location === null || region === null) ? ( <ActivityIndicator size="large" color="#ff4500" /> ) : ( [
+            <MapView
+              key={0} 
+              style={styles.map}
+              provider={PROVIDER_GOOGLE}
+              region={region}
+            > 
+              {location ? <UserMarker location={location} /> : null}
+              {
+                coordinates.map(coord => (
+                  <SunriseMarker
+                    key={coord.name}
+                    name={coord.name}
+                    coordinate={{latitude: coord.latitude, longitude: coord.longitude}}
+                    image={coord.images[0]}
+                  />
+                ))
+              }
+            </MapView>,
             
-  //         )
-  //     }
+            <MapCarousel key={1} coordinates={coordinates} />
+            ]
+          )
+      }
       
-  //   </View>
-  // );
+    </View>
+  );
 };
