@@ -1,15 +1,20 @@
-import React from 'react';
-import { Dimensions, Image, Text, View } from 'react-native';
+import React, { useRef } from 'react';
+import { Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import CarouselCard from './CarouselCard';
+
+const SLIDER_WIDTH = Dimensions.get('window').width;
+const ITEM_WIDTH = 200;
 
 export default MapCarousel = ({ coordinates }) => { 
+    const isCarousel = useRef(null);
     return (
         <Carousel
-            ref={(c) => { carousel = c; }}
+            ref={isCarousel}
             data={coordinates}
-            renderItem={renderCarouselItem}
-            sliderWidth={Dimensions.get('window').width}
-            itemWidth={200}
+            renderItem={CarouselCard}
+            sliderWidth={SLIDER_WIDTH}
+            itemWidth={ITEM_WIDTH}
         />
     );
 };

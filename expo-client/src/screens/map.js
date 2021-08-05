@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, Image, Dimensions, View, Text } from 'react-native';
+import { ActivityIndicator, Image, View, Text } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import Carousel from 'react-native-snap-carousel';
 import * as Location from 'expo-location';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapCarousel from '../components/MapCarousel';
 import SunriseMarker from '../components/SunriseMarker';
 import UserMarker from '../components/UserMarker';
 import styles from './styles/map.style';
@@ -81,7 +81,7 @@ export default MapScreen = () => {
               }
             </MapView>,
             
-            <Text key={1}>YOOOOO</Text>
+            <MapCarousel key={1} coordinates={coordinates} />
             ]
           )
       }
