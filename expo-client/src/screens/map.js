@@ -15,11 +15,9 @@ export default MapScreen = () => {
   const [region, setRegion] = useState(null);
 
   const [coordinates, setCoordinates] = useState([
-    {name: '1', latitude: 39.261610, longitude: -76.691582},
-    {name: '2', latitude: 39.260988, longitude: -76.697096},
-    {name: '3', latitude: 39.262610, longitude: -76.691682},
-    {name: '4', latitude: 39.260257, longitude: -76.693888},
-    {name: '5', latitude: 39.261220, longitude: -76.692086},
+    {name: '1', latitude: 39.470912, longitude: -75.888454},
+    {name: '2', latitude: 39.474624, longitude: -75.878442},
+    {name: '3', latitude: 39.466430, longitude: -75.877609},
   ]);
 
   getLocation = async () => {
