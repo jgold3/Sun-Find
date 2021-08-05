@@ -1,5 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { Dimensions } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -9,7 +8,10 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     map: {
-        height: Dimensions.get('window').height,
-        width: Dimensions.get('window').width,
+        position:'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
     },
 });
